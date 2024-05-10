@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using WebApplication1.Models;
 
 namespace WebApiDemo.Models;
 
@@ -18,6 +19,9 @@ public class TodoEntry
     public DateTime CreateDate { get; set; }
     public DateTime UpdateDate { get; set; }
     public DateTime? DueDate { get; set; }
+    public string? Status { get; set; }
+    //public List<TodoTag> Tags { get; } = [];
+    //public Users Owner { get; set; } = null!;
 
     public TodoEntry() { }
 
@@ -29,6 +33,7 @@ public class TodoEntry
         CreateDate = DateTime.Now;
         UpdateDate = DateTime.Now;
         DueDate = dueDate;
+        Status = Status;
     }
 
     public TodoEntry(TodoEntry entry)
@@ -39,10 +44,12 @@ public class TodoEntry
         CreateDate = entry.CreateDate;
         UpdateDate = entry.UpdateDate;
         DueDate = entry.DueDate;
+        Status = entry.Status;
     }
 
     public override string ToString()
     {
         return $"[{Id}] {Title} {Description} {DueDate?.ToString("o")}";
     }
+
 }
